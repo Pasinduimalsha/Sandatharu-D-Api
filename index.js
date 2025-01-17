@@ -14,7 +14,7 @@ const corsOptions = {
     origin: function (origin, callback) {
         console.log("New req." + origin);
         if (1) {
-            callback(null, true);
+            callback(null, true); 
         } else {
             callback(new Error("Not allowed by CORS"));
         }
@@ -38,8 +38,8 @@ app.all("/", (req, res) => {
     res.status(200).send("API END POINT");
 });
 
-app.listen(server.port, () => {
-    console.log(`Server listening on ${server.port}`);
+app.listen(3336, () => {
+    console.log(`Server listening on ${3336}`);
 });
 
 db(); 

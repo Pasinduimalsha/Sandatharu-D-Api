@@ -1,9 +1,12 @@
 
 const mongoose = require("mongoose");
 const server = require("../config/server");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: ".env" });
 
 
- const mongoUrl = `mongodb+srv://${server.username}:${server.password}@${server.host}/sandatharu?retryWrites=true&w=majority`;
+const mongoUrl = process.env.SEVER_URL;
 
 // const mongoUrl = "mongodb://localhost:27017/sandatharu";
  
