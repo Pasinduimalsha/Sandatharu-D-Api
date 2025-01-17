@@ -28,10 +28,8 @@ jobs:
     - run: npm run build --if-present
     - run: |
         touch .env
-        echo "${{ secrets.MONGO_USERNAME }}" > .env
-        echo "${{ secrets.MONGO_PASSWORD }}" > .env
-        echo "${{ secrets.MONGO_HOST }}" > .env
-        echo "${{ secrets.SERVER_PORT }}" > .env
+        echo "${{ secrets.SEVER_URL }}" > .env
+       
 
 
 
