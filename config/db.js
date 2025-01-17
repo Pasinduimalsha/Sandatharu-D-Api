@@ -6,9 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
 
 
-const mongoUrl = process.env.SEVER_URL;
+mongoUrl = process.env.SEVER_URL;
 
-// const mongoUrl = "mongodb://localhost:27017/sandatharu";
  
 const db = async () => { 
     try {
