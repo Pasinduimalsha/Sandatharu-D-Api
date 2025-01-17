@@ -38,8 +38,8 @@ app.all("/", (req, res) => {
     res.status(200).send("API END POINT");
 });
 
-app.listen(3336, () => {
-    console.log(`Server listening on ${3336}`);
+app.listen(3337, () => {
+    console.log(`Server listening on ${3337}`);
 });
 
 db(); 
