@@ -2,9 +2,11 @@ const dotenv = require("dotenv");
 
 dotenv.config({ path: ".env" });
 
-const host = process.env.SERVER_HOST;
+const host = process.env.MONGO_HOST;
 const port = process.env.SERVER_PORT;
-const url = process.env.SERVER_URL;
-const accessSecret = process.env.ACCESS_SECRET;
+const username = process.env.MONGO_USERNAME;
+const password = process.env.MONGO_PASSWORD;
 
-module.exports = { url, port, host, accessSecret };
+
+module.exports = { username, password,port, host };
+ 

@@ -1,17 +1,13 @@
-const dotenv = require("dotenv");
+
 const mongoose = require("mongoose");
+const server = require("../config/server");
 
-dotenv.config({ path: ".env" });
 
-const MONGO_USERNAME = process.env.MONGO_USERNAME;
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-const MONGO_HOST = process.env.MONGO_HOST;
-
- const mongoUrl = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}`;
+ const mongoUrl = `mongodb+srv://${server.username}:${server.password}@${server.host}/sandatharu?retryWrites=true&w=majority`;
 
 // const mongoUrl = "mongodb://localhost:27017/sandatharu";
-
-const db = async () => {
+ 
+const db = async () => { 
     try {
         mongoose.set("strictQuery", false);
 
