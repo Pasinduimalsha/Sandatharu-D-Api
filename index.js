@@ -9,7 +9,7 @@ const expensesRoute = require("./routes/expensesRouter");
 require("dotenv").config();
 
 const app = express();
-
+ 
 const whitelist = []; 
 const corsOptions = {
     origin: function (origin, callback) {

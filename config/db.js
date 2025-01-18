@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 // dotenv.config({ path: ".env" });
 
 
-mongoUrl = process.env.SEVER_URL;
+let mongoUrl = process.env.SERVER_URL;
 
  
 const db = async () => { 
