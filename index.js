@@ -40,8 +40,11 @@ app.all("/", (req, res) => {
     res.status(200).send("API END POINT");
 });
 
+
 app.listen(port, () => {
     console.log(`Server listening on ${port}`);
-});
+}
+
+);
 
 db(); 

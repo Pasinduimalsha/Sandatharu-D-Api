@@ -4,9 +4,9 @@ const dotenv = require("dotenv");
 
 // dotenv.config({ path: ".env" });
 
+
 mongoUrl = process.env.SEVER_URL;
 
-// const mongoUrl = "mongodb://localhost:27017/sandatharu";
  
 const db = async () => { 
     try {
