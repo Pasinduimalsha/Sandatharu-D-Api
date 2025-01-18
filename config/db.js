@@ -2,9 +2,9 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
-dotenv.config({ path: ".env" });
+// dotenv.config({ path: ".env" });
 
-// mongoUrl = process.env.SEVER_URL;
+mongoUrl = process.env.SEVER_URL;
 
 // const mongoUrl = "mongodb://localhost:27017/sandatharu";
  
@@ -12,8 +12,8 @@ const db = async () => {
     try {
         mongoose.set("strictQuery", false);
 
-        await mongoose.connect(process.env.SEVER_URL);
-        console.log(process.env.SEVER_URL);
+        await mongoose.connect(mongoUrl);
+        console.log(mongoUrl);
         console.log("MongoDB connected");
     } catch (err) {
         console.error(err.message);
@@ -22,4 +22,4 @@ const db = async () => {
 };  
 
 module.exports = db;
- 
+  

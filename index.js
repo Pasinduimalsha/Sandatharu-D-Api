@@ -6,6 +6,7 @@ const server = require("./config/server");
 const db = require("./config/db"); 
 const bodyParser = require("body-parser");
 const expensesRoute = require("./routes/expensesRouter");
+require("dotenv").config();
 
 const app = express();
 
@@ -22,6 +23,7 @@ const corsOptions = {
     credentials: true,
 };
 
+const port = process.env.SERVER_PORT || 8000;
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -38,8 +40,8 @@ app.all("/", (req, res) => {
     res.status(200).send("API END POINT");
 });
 
-app.listen(3337, () => {
-    console.log(`Server listening on ${3337}`);
+app.listen(port, () => {
+    console.log(`Server listening on ${port}`);
 });
 
 db(); 
