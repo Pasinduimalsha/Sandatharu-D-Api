@@ -1,8 +1,10 @@
 const User = require("../models/user.js");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../Utils/generateTokenAndSetCookie.js");
+const sendVerificationEmail = require("../mailtrap/emails.js");
 
-// Create a new expense
+
+
 const signUp = async (req, res) => {
 
     const { email, password, name } = req.body;
@@ -19,7 +21,7 @@ const signUp = async (req, res) => {
             return res.status(400).json({ success: false, message: "User already exists" });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password,  10);
         const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
          console.log("verificationToken", verificationToken);
 
@@ -33,9 +35,10 @@ const signUp = async (req, res) => {
         await user.save();
 
         //JWT 
-
         generateTokenAndSetCookie.genereteTokenAndSetCookie(res, user._id);
-    
+
+        await sendVerificationEmail(user.email, verificationToken);
+
         res.status(201).json({
             success: true,
             message: "User created successfully",
@@ -44,9 +47,7 @@ const signUp = async (req, res) => {
             password: undefined,
             }
         }) 
-        
-        
-
+    
     }
     catch (error) {
         return res.status(400).json({ success: false, message: "error.messaage" })
@@ -72,4 +73,8 @@ module.exports = {
     login,
     logout,
 };
+
+
+
+
 
