@@ -1,25 +1,26 @@
-
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 
-// dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env" });
 
+const MONGO_USERNAME = process.env.MONGO_USERNAME;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+const MONGO_HOST = process.env.MONGO_HOST;
 
-let mongoUrl = process.env.SERVER_URL;
+ const mongoUrl = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}`;
 
- 
-const db = async () => { 
+// const mongoUrl = "mongodb://localhost:27017/sandatharu";
+
+const db = async () => {
     try {
         mongoose.set("strictQuery", false);
 
         await mongoose.connect(mongoUrl);
-        console.log(mongoUrl);
         console.log("MongoDB connected");
     } catch (err) {
         console.error(err.message);
         process.exit(1);
     }
-};  
+};
 
 module.exports = db;
-  

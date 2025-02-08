@@ -6,32 +6,32 @@ const server = require("./config/server");
 const db = require("./config/db"); 
 const bodyParser = require("body-parser");
 const expensesRoute = require("./routes/expensesRouter");
-require("dotenv").config();
+const authRoute = require("./routes/authRouter");
 
 const app = express();
- 
-const whitelist = []; 
+
+const whitelist = [];
 const corsOptions = {
     origin: function (origin, callback) {
         console.log("New req." + origin);
         if (1) {
-            callback(null, true); 
+            callback(null, true);
         } else {
             callback(new Error("Not allowed by CORS"));
         }
-    },
+    }, 
     credentials: true,
 };
-
-const port = process.env.SERVER_PORT || 8000;
+  
 // Middleware
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); 
 app.use(express.json());
 app.use(bodyParser.json()); //to pase json data
 app.use(express.urlencoded({ extended: true }));
 
 // Use the expenses routes
 app.use("/expenses", expensesRoute);
+app.use("/api/auth", authRoute);
 
 app.use("/public", express.static(__dirname + "/public"));
 
@@ -40,11 +40,9 @@ app.all("/", (req, res) => {
     res.status(200).send("API END POINT");
 });
 
-
-app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
-}
-
-);
+app.listen(server.port, () => {
+    console.log(`Server listening on ${server.port}`);
+});
 
 db(); 
+  
