@@ -37,7 +37,7 @@ jobs:
         echo "${{ secrets.NODE_ENV }}" >> .env
         echo "${{ secrets.SERVER_PORT }}" >> .env
         
-    # - run: pm2 restart app    
+    - run: pm2 restart BackendApi
        
 
 
