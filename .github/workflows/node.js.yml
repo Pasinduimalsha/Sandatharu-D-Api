@@ -28,7 +28,15 @@ jobs:
     - run: npm run build --if-present
     - run: |
         touch .env
-        echo "${{ secrets.SERVER_URL }}" > .env
+        echo "${{ secrets.JWT_SECRET }}" >> .env
+        echo "${{ secrets.MAILTRAP_ENDPOINT }}" >> .env
+        echo "${{ secrets.MAILTRAP_TOKEN }}" >> .env
+        echo "${{ secrets.MONGO_HOST }}" >> .env
+        echo "${{ secrets.MONGO_USERNAME }}" >> .env
+        echo "${{ secrets.MONGO_PASSWORD }}" >> .env
+        echo "${{ secrets.NODE_ENV }}" >> .env
+        echo "${{ secrets.SERVER_PORT }}" >> .env
+        
     - run: pm2 restart app    
        
 
