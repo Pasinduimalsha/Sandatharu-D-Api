@@ -30,7 +30,7 @@ app.use(bodyParser.json()); //to pase json data
 app.use(express.urlencoded({ extended: true }));
 
 // Use the expenses routes
-app.use("/expenses", expensesRoute);
+app.use("/api/expenses", expensesRoute);
 app.use("/api/auth", authRoute);
 
 app.use("/public", express.static(__dirname + "/public"));
