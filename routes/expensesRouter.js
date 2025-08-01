@@ -13,7 +13,10 @@ router.get("/get/:billingID", expensesController.getExpensesByBillingID);
 // Route to get all billingIDs
 router.get('/billing-ids', expensesController.fetchBillingIDs);
 
-// Route to update an expense
+// Route to update an expense// Route to fetch all billing details
+router.get('/billing-details', expensesController.fetchAllBillingDetails);
+
+
 router.put("/:id", expensesController.updateExpense);
 
 // Route to delete an expense
